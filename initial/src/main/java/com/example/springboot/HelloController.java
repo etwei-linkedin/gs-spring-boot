@@ -8,15 +8,15 @@ import java.util.Random;
 @RestController
 public class HelloController {
 
-	public static final int upperbound = 25;
+	public static final int UPPER_BOUND = 25;
 	public static final Random rand = new Random();
 
 	@RequestMapping("/")
 	//create algorithm under controller to send the calculated value to the server
 	public String index(String[] args) {
 		//Random rand = new Random();
-		int num1 = rand.nextInt(upperbound);
-		int num2 = rand.nextInt(upperbound);
+		int num1 = rand.nextInt(UPPER_BOUND);
+		int num2 = rand.nextInt(UPPER_BOUND);
 		String[] operators = {"+","-","*","/"};
 		int opr = rand.nextInt(operators.length);
 		String operand = operators[opr];
@@ -25,7 +25,14 @@ public class HelloController {
 		return equation + " = " + ans;
 	}
 
-	//this method takes in an operand and two integers and computes them
+	/**
+	 * Returns the computed result of two integers
+	 * @param operand The operand to be used for computation
+	 * @param num1 The first
+	 *                number to be operated on
+	 * @param num2 The second number to be operated on
+	 * @return the computed result
+	 */
 	public static int applyOp(String operand, int num1, int num2) {
 	    switch (operand) {
 			case "+":
