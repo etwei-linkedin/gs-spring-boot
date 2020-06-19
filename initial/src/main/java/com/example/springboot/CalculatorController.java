@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Random;
 
 @RestController
-public class HelloController {
+public class CalculatorController {
 
 	public static final int UPPER_BOUND = 25;
 	public static final Random RAND = new Random();
@@ -34,7 +34,7 @@ public class HelloController {
 	 * @return the computed result
 	 */
 	public static int applyOp(String operand, int num1, int num2) {
-	    switch (operand) {
+		switch (operand) {
 			case "+":
 				return num1 + num2;
 			case "-":
