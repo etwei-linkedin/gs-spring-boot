@@ -9,16 +9,16 @@ import java.util.Random;
 public class HelloController {
 
 	public static final int UPPER_BOUND = 25;
-	public static final Random rand = new Random();
+	public static final Random RAND = new Random();
 
 	@RequestMapping("/")
 	//create algorithm under controller to send the calculated value to the server
 	public String index(String[] args) {
 		//Random rand = new Random();
-		int num1 = rand.nextInt(UPPER_BOUND);
-		int num2 = rand.nextInt(UPPER_BOUND);
+		int num1 = RAND.nextInt(UPPER_BOUND);
+		int num2 = RAND.nextInt(UPPER_BOUND);
 		String[] operators = {"+","-","*","/"};
-		int opr = rand.nextInt(operators.length);
+		int opr = RAND.nextInt(operators.length);
 		String operand = operators[opr];
 		String equation = num1 + operand + num2;
 		int ans = applyOp(operand, num1, num2);
