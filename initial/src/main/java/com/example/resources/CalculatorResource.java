@@ -1,18 +1,21 @@
-package com.example.springboot;
+package com.example.resources;
 
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Random;
 
 @RestController
-public class CalculatorController {
+public class CalculatorResource {
 
 	public static final int UPPER_BOUND = 25;
 	public static final Random RAND = new Random();
 
+	//only make block comments
+    //refactor this class - put in business logic to the service class
 	@RequestMapping("/")
-	//create algorithm under controller to send the calculated value to the server
+    /**
+    *
+    */
 	public String index(String[] args) {
 		//Random rand = new Random();
 		int num1 = RAND.nextInt(UPPER_BOUND);
