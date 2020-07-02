@@ -10,7 +10,6 @@ import java.util.List;
 
 
 public class CalculatorControllerTests {
-    private List<Integer> testList = new ArrayList<>();
 
     @Test
     public void testApplyOpPlus() {
