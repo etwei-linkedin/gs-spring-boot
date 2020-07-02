@@ -4,7 +4,11 @@ import com.example.services.CalculatorService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalculatorControllerTests {
+    private List<Integer> testList = new ArrayList<>();
 
     @Test
     public void testApplyOpPlus() {
@@ -40,6 +44,12 @@ public class CalculatorControllerTests {
         String expectedMessage = "Cannot divide by 0";
         String actualMessage = exception.getMessage();
         Assertions.assertTrue(actualMessage.contains(expectedMessage));
+
     }
 
-}
+    @Test
+    public void testrandList() {
+        List testList = CalculatorService.randList();
+        Assertions.assertEquals(testList.size(), 10);
+        }
+    }

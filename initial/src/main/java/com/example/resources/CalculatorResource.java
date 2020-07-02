@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
+import java.util.List;
 
 @RestController
 public class CalculatorResource {
@@ -23,5 +24,12 @@ public class CalculatorResource {
 		 int ans = cs.applyOp(operand, num1, num2);
 		return (num1 + operand + num2 + " = " + ans);
 	}
+
+	@RequestMapping(URL_PREFIX + "/randomlist")
+	public List getRandList() {
+		CalculatorService cs = new CalculatorService();
+		return cs.randList();
+	}
+
 }
 

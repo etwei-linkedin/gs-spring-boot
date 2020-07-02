@@ -2,6 +2,10 @@ package com.example.services;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.*;
+
 @RestController
 public class CalculatorService {
     /**
@@ -26,5 +30,18 @@ public class CalculatorService {
                 return num1 / num2;
         }
         return 0;
+    }
+
+    /**
+     * @return a list of random integers of size 10
+     */
+    public static List randList() {
+        Random RAND = new Random();
+        List<Integer> randomList = new ArrayList<>();
+        int UPPER_BOUND = 50;
+        while (randomList.size() < 10) {
+            randomList.add(RAND.nextInt(UPPER_BOUND));
+        }
+        return randomList;
     }
 }
