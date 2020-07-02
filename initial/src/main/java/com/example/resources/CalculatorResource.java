@@ -31,5 +31,10 @@ public class CalculatorResource {
 		return cs.randList();
 	}
 
+	@RequestMapping(URL_PREFIX + "/randomSortedlist")
+	public List getRandSortedList() {
+		CalculatorService cs = new CalculatorService();
+		return cs.sortRandList();
+	}
 }
 

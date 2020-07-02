@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
+import java.util.Collections;
+import java.util.Random;
 
 @RestController
 public class CalculatorService {
@@ -42,6 +43,15 @@ public class CalculatorService {
         while (randomList.size() < 10) {
             randomList.add(RAND.nextInt(UPPER_BOUND));
         }
+        return randomList;
+    }
+
+    /**
+     * @return a sorted list of random integers of size 10
+     */
+    public static List sortRandList() {
+        List randomList = randList();
+        Collections.sort(randomList);
         return randomList;
     }
 }

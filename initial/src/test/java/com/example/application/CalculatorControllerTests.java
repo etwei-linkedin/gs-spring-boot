@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
 
 public class CalculatorControllerTests {
     private List<Integer> testList = new ArrayList<>();
@@ -51,5 +53,15 @@ public class CalculatorControllerTests {
     public void testrandList() {
         List testList = CalculatorService.randList();
         Assertions.assertEquals(testList.size(), 10);
-        }
+
     }
+
+    @Test
+    public void testrandSortedList() {
+        List testSortedList = CalculatorService.sortRandList();
+        List tmp = new ArrayList(testSortedList);
+        Collections.sort(tmp);
+        boolean sorted = tmp.equals(testSortedList);
+        Assertions.assertTrue(sorted);
+    }
+}
