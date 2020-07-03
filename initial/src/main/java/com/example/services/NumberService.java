@@ -12,7 +12,7 @@ public class NumberService {
      *
      * @return
      */
-    public int getRand() {
+    public static int getRand() {
         return RAND.nextInt(10);
     }
 }
