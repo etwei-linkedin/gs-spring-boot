@@ -9,8 +9,7 @@ public class NumberService {
     public static final Random RAND = new Random();
 
     /**
-     *
-     * @return
+     * @return a random number no larger than 10
      */
     public static int getRand() {
         return RAND.nextInt(10);
