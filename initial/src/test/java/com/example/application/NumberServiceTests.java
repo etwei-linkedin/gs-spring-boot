@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-public class NumberControllerTests {
+public class NumberServiceTests {
 
     @Test
     public void testgetRand() {
-        Integer testInt = NumberService.getRand();
+        Integer testInt = new NumberService().getRand();
         Assertions.assertNotNull(testInt);
     }
 }

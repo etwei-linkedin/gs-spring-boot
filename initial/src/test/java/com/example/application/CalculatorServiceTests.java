@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class CalculatorControllerTests {
+public class CalculatorServiceTests {
 
     @Test
     public void testApplyOpPlus() {
