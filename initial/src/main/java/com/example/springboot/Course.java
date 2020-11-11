@@ -7,6 +7,7 @@ import java.util.Date;
 
 
 public class Course {
+    private boolean _coursePaymentStatus;
     private String _name;
     private Date _publishDate;
     private String _author;
@@ -14,13 +15,14 @@ public class Course {
     private boolean _isPublic;
     private float _price;
 
-    public Course(String name, Date publishDate, String author, long id, boolean isPublic, float price) {
+    public Course(String name, Date publishDate, String author, long id, boolean isPublic, float price, boolean coursePaymentStatus) {
         _name = name;
         _publishDate = publishDate;
         _author = author;
         _id = id;
         _isPublic = isPublic;
         _price = price;
+        _coursePaymentStatus = coursePaymentStatus;
     }
     public String get_name() {
         return _name;
@@ -66,8 +68,12 @@ public class Course {
         this._price = _price;
     }
 
+    public boolean get_coursePaymentStatus() { return _coursePaymentStatus; }
+
+    public void set_coursePaymentStatus(boolean _coursePaymentStatus) { this._coursePaymentStatus = _coursePaymentStatus; }
+
     public String getCourse(String[] args) throws JsonProcessingException {
-        Course course = new Course("Course1", new Date(), "Mary Sima", _id, true, 50f);
+        Course course = new Course("Course1", new Date(), "Mary Sima", _id, true, 50f, true);
         return new ObjectMapper().writeValueAsString(course);
     }
 }
