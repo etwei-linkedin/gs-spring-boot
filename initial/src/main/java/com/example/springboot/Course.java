@@ -1,5 +1,6 @@
 package com.example.springboot;
 
+import com.example.services.PaymentStatusService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -7,7 +8,7 @@ import java.util.Date;
 
 
 public class Course {
-    private boolean _coursePaymentStatus;
+    private PaymentStatusService.PaymentStatus _coursePaymentStatus;
     private String _name;
     private Date _publishDate;
     private String _author;
@@ -15,7 +16,7 @@ public class Course {
     private boolean _isPublic;
     private float _price;
 
-    public Course(String name, Date publishDate, String author, long id, boolean isPublic, float price, boolean coursePaymentStatus) {
+    public Course(String name, Date publishDate, String author, long id, boolean isPublic, float price, PaymentStatusService.PaymentStatus coursePaymentStatus) {
         _name = name;
         _publishDate = publishDate;
         _author = author;
@@ -68,12 +69,12 @@ public class Course {
         this._price = _price;
     }
 
-    public boolean get_coursePaymentStatus() { return _coursePaymentStatus; }
+    public PaymentStatusService.PaymentStatus get_coursePaymentStatus() { return _coursePaymentStatus; }
 
-    public void set_coursePaymentStatus(boolean _coursePaymentStatus) { this._coursePaymentStatus = _coursePaymentStatus; }
+    public void set_coursePaymentStatus(PaymentStatusService.PaymentStatus _coursePaymentStatus) { this._coursePaymentStatus = _coursePaymentStatus; }
 
     public String getCourse(String[] args) throws JsonProcessingException {
-        Course course = new Course("Course1", new Date(), "Mary Sima", _id, true, 50f, true);
+        Course course = new Course("Course1", new Date(), "Mary Sima", _id, true, 50f, _coursePaymentStatus);
         return new ObjectMapper().writeValueAsString(course);
     }
 }

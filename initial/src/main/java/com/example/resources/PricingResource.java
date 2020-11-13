@@ -2,7 +2,6 @@ package com.example.resources;
 
 import com.example.services.PricingService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ public class PricingResource {
     }
 
     @RequestMapping(URL_PREFIX + "/{id}")
-    public String getCourseData(@PathVariable("id") long id) throws JsonProcessingException, JSONException {
+    public String getCourseData(@PathVariable("id") long id) throws JsonProcessingException {
         return String.valueOf(_pricingService.getPricing(id));
     }
 }
