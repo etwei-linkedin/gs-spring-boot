@@ -14,11 +14,20 @@ public class CourseResource {
     public final CourseService _courseService;
 
     @Autowired
+    /**
+     * @return CourseService object
+     */
     public CourseResource(CourseService courseService) {
         _courseService = courseService;
     }
 
     @RequestMapping(URL_PREFIX + "/{id}")
+    /**
+     * Returns a string of
+     * @param id The id of the course
+     * @return the course json
+     * @throws JsonProcessingException if id does not exist
+     */
     public String getCourseData(@PathVariable("id") long id) throws JsonProcessingException {
         //String cs = new CourseService().getCourse();
         return _courseService.getCourse(id);

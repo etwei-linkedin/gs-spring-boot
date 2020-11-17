@@ -3,10 +3,26 @@ package com.example.services;
 import java.util.*;
 
 public class PaymentStatusService {
-    // payment_status service (id, user_id, boolean is_paid, expiration_date(null or set a date if is_paid is true))
+    // TODO: add the following fields to PaymentStatusService -> Integer user_id, boolean is_paid,
+    // TODO: DATETIME expiration_date (null or date if is_paid = true)
+
+    /**
+     * All possible payment statuses
+     */
     public enum PaymentStatus {
+        /**
+         * Paid status
+         */
         PAID,
+
+        /**
+         * UNPAID status
+         */
         UNPAID,
+
+        /**
+         * Pending status
+         */
         PENDING;
     }
 
@@ -22,6 +38,11 @@ public class PaymentStatusService {
         return coursePaymentStatusMap;
     }
 
+    /**
+     * Returns a course id and it's corresponding payment status
+     * @param id The id of the course
+     * @return a hashmap of each course id and their corresponding payment status
+     */
     public PaymentStatus getPaymentStatus(long id) {
 
         return coursePaymentStatusMap.get(id);

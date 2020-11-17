@@ -9,11 +9,16 @@ import java.util.Date;
 
 @RestController
 public class CourseService {
-    // go through static modifiers & public/private modifiers for java methods
+    // TODO: go through static modifiers & public/private modifiers for java methods
+
+    /**
+     * returns course json after calling the PricingService and PaymentStatusService to get these additional fields
+     * @param id The course id
+     * @return course json as a string
+     * @throws JsonProcessingException when course id does not exist
+     */
     public String getCourse(long id) throws JsonProcessingException {
-        if(id > 10 || id < 1) {
-            throw new IllegalArgumentException("The course id does not exist");
-        }
+        // TODO: autowire the pricing service
         Float coursePrice = new PricingService().getPricing(id);
         PaymentStatusService.PaymentStatus coursePaymentStatus = new PaymentStatusService().getPaymentStatus(id);
         Course course = new Course("Course1", new Date(), "Mary Sima", id, true, coursePrice, coursePaymentStatus);
