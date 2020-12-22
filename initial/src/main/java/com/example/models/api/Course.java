@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.example.models.api;
 
 import com.example.services.PaymentStatusService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,53 +25,66 @@ public class Course {
         _price = price;
         _coursePaymentStatus = coursePaymentStatus;
     }
-    public String get_name() {
+
+    public Course() {
+
+    }
+
+    public PaymentStatusService.PaymentStatus getCoursePaymentStatus() {
+        return _coursePaymentStatus;
+    }
+
+    public void setCoursePaymentStatus(PaymentStatusService.PaymentStatus coursePaymentStatus) {
+        _coursePaymentStatus = coursePaymentStatus;
+    }
+
+    public String getName() {
         return _name;
     }
 
-    public void set_name(String _name) {
-        this._name = _name;
+    public void setName(String name) {
+        _name = name;
     }
 
-    public Date get_publishDate() {
+    public Date getPublishDate() {
         return _publishDate;
     }
 
-    public void set_publishDate(Date _publishDate) {
-        this._publishDate = _publishDate;
+    public void setPublishDate(Date publishDate) {
+        _publishDate = publishDate;
     }
 
-    public String get_author() {
+    public String getAuthor() {
         return _author;
     }
 
-    public void set_author(String _author) {
-        this._author = _author;
+    public void setAuthor(String author) {
+        _author = author;
     }
 
-    public long get_id() {return _id; }
+    public long getId() {
+        return _id;
+    }
 
-    public void set_id(long _id) { this._id = _id; }
+    public void setId(long id) {
+        _id = id;
+    }
 
-    public boolean is_isPublic() {
+    public boolean isPublic() {
         return _isPublic;
     }
 
-    public void set_isPublic(boolean _isPublic) {
-        this._isPublic = _isPublic;
+    public void setPublic(boolean aPublic) {
+        _isPublic = aPublic;
     }
 
-    public float get_price() {
+    public float getPrice() {
         return _price;
     }
 
-    public void set_price(float _price) {
-        this._price = _price;
+    public void setPrice(float price) {
+        _price = price;
     }
-
-    public PaymentStatusService.PaymentStatus get_coursePaymentStatus() { return _coursePaymentStatus; }
-
-    public void set_coursePaymentStatus(PaymentStatusService.PaymentStatus _coursePaymentStatus) { this._coursePaymentStatus = _coursePaymentStatus; }
 
     public String getCourse(String[] args) throws JsonProcessingException {
         Course course = new Course("Course1", new Date(), "Mary Sima", _id, true, 50f, _coursePaymentStatus);

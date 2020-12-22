@@ -1,14 +1,16 @@
 package com.example.services;
 
-import com.example.springboot.Course;
+import com.example.clients.CourseClient;
+import com.example.models.api.Course;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
-
 @RestController
 public class CourseService {
+    // TODO: this needs to be auto-wired
+    private final CourseClient _courseClient = new CourseClient();
+
     // TODO: go through static modifiers & public/private modifiers for java methods
 
     /**
@@ -18,10 +20,28 @@ public class CourseService {
      * @throws JsonProcessingException when course id does not exist
      */
     public String getCourse(long id) throws JsonProcessingException {
+
+        com.example.models.backend.Course backendCourse = _courseClient.getCourse(id);
+
         // TODO: autowire the pricing service
         Float coursePrice = new PricingService().getPricing(id);
         PaymentStatusService.PaymentStatus coursePaymentStatus = new PaymentStatusService().getPaymentStatus(id);
-        Course course = new Course("Course1", new Date(), "Mary Sima", id, true, coursePrice, coursePaymentStatus);
-        return new ObjectMapper().writeValueAsString(course);
+
+        Course apiCourse = buildApiCourse(backendCourse, coursePaymentStatus, coursePrice);
+        return new ObjectMapper().writeValueAsString(apiCourse);
+    }
+
+    private Course buildApiCourse(com.example.models.backend.Course backendCourse, PaymentStatusService.PaymentStatus paymentStatus, Float price) {
+        Course apiCourse = new Course();
+
+        apiCourse.setId(backendCourse.getId());
+        apiCourse.setName(backendCourse.getName());
+        apiCourse.setPublishDate(backendCourse.getPublishDate());
+        apiCourse.setPublic(backendCourse.isPublic());
+        apiCourse.setAuthor(backendCourse.getAuthor());
+        apiCourse.setPrice(price);
+        apiCourse.setCoursePaymentStatus(paymentStatus);
+
+        return apiCourse;
     }
 }
